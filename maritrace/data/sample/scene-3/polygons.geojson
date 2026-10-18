@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -9.9,
+              49.886
+            ],
+            [
+              -9.842,
+              49.886
+            ],
+            [
+              -9.842,
+              49.855
+            ],
+            [
+              -9.9,
+              49.855
+            ],
+            [
+              -9.9,
+              49.886
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "pixel_area": 894,
+        "area_km2": 11.014973999999999
+      }
+    }
+  ]
+}

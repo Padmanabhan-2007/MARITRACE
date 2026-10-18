@@ -1,0 +1,59 @@
+[
+  {
+    "index": 0,
+    "timestamp_utc": "2026-10-18T08:32:13Z",
+    "event_type": "SYSTEM_GENESIS",
+    "actor": "MARITRACE_CORE",
+    "details": {
+      "system": "MARITRACE Maritime Pollution Forensics",
+      "provenance_policy": "ISO 27037 Digital Evidence Admissibility Guidelines",
+      "disclaimer": "A cryptographic hash chain guarantees post-hoc tamper-evident logging of recorded events, but does not independently prove the truthfulness or physical accuracy of upstream sensor inputs."
+    },
+    "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "hash": "661dab594b0a93150e120de66d31853a3a27805cddca643f9e2e5d4177d4accb"
+  },
+  {
+    "index": 1,
+    "timestamp_utc": "2026-10-18T08:32:13Z",
+    "event_type": "EVIDENCE_FUSION_BASELINE_ONLY",
+    "actor": "MARITRACE_PIPELINE",
+    "details": {
+      "incident_id": "10716",
+      "incident_name": "Historical alignment check",
+      "incident_location": {
+        "lat": 29.135,
+        "lon": -89.304
+      },
+      "sar_oil_prob": 0.9,
+      "spatiotemporal_gate": {
+        "passed": false,
+        "code": "TEMPORAL_WINDOW_MISMATCH",
+        "meta": {
+          "reason": "Temporal validation failure: AIS observation window (2024-01-02 to 2024-01-02) and incident time (2024-01-07) differ by 106.0 hours (> 24.0h allowed). Vessels must be retained strictly as a Regional Historical Baseline Scenario.",
+          "temporal_gap_hours": 106.02
+        },
+        "ais_observation_window_utc": {
+          "start": "2024-01-02T00:00:00+00:00",
+          "end": "2024-01-02T23:59:00+00:00"
+        },
+        "incident_time_utc": "2024-01-07T10:00:00+00:00"
+      },
+      "decision": "ABSTAIN",
+      "primary_reason": "AIS time window does not align with incident time; tracks are retained only as a regional historical baseline.",
+      "is_historical_baseline": true,
+      "candidate_count": 0,
+      "ranked_leads": [],
+      "historical_baseline_vessels": [
+        {
+          "mmsi": "123456789",
+          "vessel_name": "BASELINE ONLY",
+          "start_time_utc": "2024-01-02T00:00:00Z",
+          "end_time_utc": "2024-01-02T23:59:00Z"
+        }
+      ],
+      "timestamp_utc": "2026-10-18T08:32:13Z"
+    },
+    "previous_hash": "661dab594b0a93150e120de66d31853a3a27805cddca643f9e2e5d4177d4accb",
+    "hash": "b18d2267cce21e1001f65d371527153d928f962ba17685b1d09f42a20b52c1f3"
+  }
+]

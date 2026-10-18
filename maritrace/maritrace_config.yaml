@@ -1,0 +1,88 @@
+# MARITRACE System Configuration
+project:
+  name: "MARITRACE"
+  title: "Maritime Pollution Forensics and Evidence Fusion"
+  version: "1.0.0"
+  random_seed: 42
+
+paths:
+  dataset_root: "D:\\dataset maritrace"
+  kaggle_root: "D:\\dataset maritrace\\kaggle"
+  sar_images_dir: "D:\\dataset maritrace\\kaggle\\data"
+  metadata_dir: "D:\\dataset maritrace\\kaggle\\metadata"
+  primary_outputs_dir: "D:\\dataset maritrace\\outputs"
+  local_runs_dir: "d:\\maritrace\\runs\\prod_outputs"
+  
+subdirs:
+  models: "models"
+  processed_data: "processed_data"
+  metrics: "metrics"
+  plots: "plots"
+  logs: "logs"
+  audit: "audit"
+
+satellite_model:
+  architecture: "mobilenet_v2"
+  pretrained: true
+  num_classes: 1  # Binary classification: 0 = No Oil / Lookalike / Clean Sea, 1 = Oil Feature
+  image_size: 224
+  batch_size: 16
+  num_workers: 0
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  epochs: 5
+  early_stopping_patience: 3
+  split_ratios:
+    train: 0.70
+    val: 0.15
+    test: 0.15
+  class_weights_auto: true
+
+vessel_model:
+  task: "gear_classification"
+  models_to_compare: ["hist_gradient_boosting", "random_forest"]
+  sample_limit_per_class: 30000
+  group_column: "mmsi"
+  test_size: 0.20
+  random_state: 42
+
+ais:
+  file_name: "ais-2024-01-02.csv.zst"
+  chunk_size: 100000
+  stream_sample_limit: 1000000
+  default_roi:
+    name: "Gulf of Mexico - Mississippi Delta"
+    lat_min: 27.5
+    lat_max: 30.5
+    lon_min: -91.5
+    lon_max: -88.0
+
+incident:
+  default_incident_id: 10716
+  name: "Mystery Sheen; vicinity of Coquille Bay, LA"
+  lat: 29.1350
+  lon: -89.3039
+  open_date: "2024-01-07"
+  observation_time_utc: "2024-01-02T12:00:00"
+
+ocean_drift:
+  netcdf_file: "cmems_obs-mob_glo_phy-cur_nrt_0.25deg_P1D-m_1792237857475.nc"
+  wind_factor: 0.03
+  coriolis_deflection_deg: 12.0
+  eddy_diffusivity_m2s: 15.0
+  simulation_hours: [2, 4, 6, 12, 18, 24]
+  fallback_current_u: 0.18
+  fallback_current_v: -0.08
+  fallback_wind_u: -3.5
+  fallback_wind_v: -2.0
+
+fusion:
+  weights:
+    spatial_drift_overlap: 0.35
+    temporal_alignment: 0.25
+    vessel_risk_profile: 0.20
+    ais_anomaly: 0.20
+  thresholds:
+    high_confidence: 0.70
+    inconclusive: 0.45
+    abstention_sar_min: 0.50

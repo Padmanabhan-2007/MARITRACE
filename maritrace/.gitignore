@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+.tmp/
+.pytest_cache/
+data/synthetic/
+runs/**
+!runs/sample_grid.png
+!runs/exp1/
+!runs/exp1/best.pth
+!runs/exp2/
+!runs/exp2/best.pth
+!data/sample/**

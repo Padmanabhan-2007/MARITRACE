@@ -1,0 +1,38 @@
+[
+  {
+    "index": 0,
+    "timestamp_utc": "2026-10-18T08:32:13Z",
+    "event_type": "SYSTEM_GENESIS",
+    "actor": "MARITRACE_CORE",
+    "details": {
+      "system": "MARITRACE Maritime Pollution Forensics",
+      "provenance_policy": "ISO 27037 Digital Evidence Admissibility Guidelines",
+      "disclaimer": "A cryptographic hash chain guarantees post-hoc tamper-evident logging of recorded events, but does not independently prove the truthfulness or physical accuracy of upstream sensor inputs."
+    },
+    "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "hash": "661dab594b0a93150e120de66d31853a3a27805cddca643f9e2e5d4177d4accb"
+  },
+  {
+    "index": 1,
+    "timestamp_utc": "2026-10-18T08:32:13Z",
+    "event_type": "EVIDENCE_FUSION_ABSTENTION",
+    "actor": "MARITRACE_PIPELINE",
+    "details": {
+      "incident_id": "TEST-01",
+      "incident_name": "Test Lookalike Scene",
+      "decision": "ABSTAIN",
+      "status": "NOT_AN_OIL_SLICK",
+      "primary_reason": "Satellite SAR classifier confidence (0.250) is below minimum threshold (0.500). Feature classified as oceanic look-alike (wind calm/biogenic sheen).",
+      "ranked_leads": [],
+      "forensic_weights": {
+        "spatial_drift_overlap": 0.35,
+        "temporal_alignment": 0.25,
+        "vessel_physical_profile": 0.2,
+        "ais_anomaly": 0.2
+      },
+      "timestamp_utc": "2026-10-18T08:32:13Z"
+    },
+    "previous_hash": "661dab594b0a93150e120de66d31853a3a27805cddca643f9e2e5d4177d4accb",
+    "hash": "a4787ac304d365ddde4c603c8ca4154daee30b280c3b54e14bab59dba314ee34"
+  }
+]
